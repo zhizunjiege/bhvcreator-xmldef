@@ -146,11 +146,20 @@
       <xs:element name="Consequence">
         <xs:complexType>
           <xs:sequence>
-            <xs:element name="Assignment" maxOccurs="unbounded">
+            <xs:element name="Assignment" minOccurs="0" maxOccurs="unbounded">
               <xs:complexType>
                 <xs:sequence>
                   <xs:element name="Target" type="xs:token" />
                   <xs:element name="Value" type="Expression" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="ArrayOperation" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Target" type="xs:token" />
+                  <xs:element name="Operation" type="xs:token" />
+                  <xs:element name="Args" type="Expression" minOccurs="0" />
                 </xs:sequence>
               </xs:complexType>
             </xs:element>
