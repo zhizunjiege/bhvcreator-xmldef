@@ -20,7 +20,9 @@
         <Param name="a" type="uint32" />
         <Param name="b" type="uint32" />
       </Params>
-      <Return type="u">a+b</Return>
+      <Return type="uint32">
+        <Value>a+b</Value>
+      </Return>
     </FuncDefine>
     <FuncDefine type="operator">
       <Symbol>*</Symbol>
@@ -28,7 +30,9 @@
         <Param name="a" type="Vector3" />
         <Param name="b" type="Vector3" />
       </Params>
-      <Return type="float64">a.x*b.x+a.y*b.y+a.z*b.z </Return>
+      <Return type="float64">
+        <Value>a.x*b.x+a.y*b.y+a.z*b.z</Value>
+      </Return>
     </FuncDefine>
   </FuncDefines>
   <MetaInfo>

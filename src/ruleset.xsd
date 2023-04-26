@@ -95,11 +95,10 @@
       </xs:element>
       <xs:element name="Return">
         <xs:complexType>
-          <xs:complexContent>
-            <xs:extension base="Expression">
-              <xs:attribute name="type" type="xs:token" use="required" />
-            </xs:extension>
-          </xs:complexContent>
+          <xs:sequence>
+            <xs:element name="Value" type="Expression" />
+          </xs:sequence>
+          <xs:attribute name="type" type="xs:token" use="required" />
         </xs:complexType>
       </xs:element>
     </xs:sequence>
