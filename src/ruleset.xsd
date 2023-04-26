@@ -109,7 +109,7 @@
     <xs:complexContent>
       <xs:extension base="Parameter">
         <xs:sequence>
-          <xs:element name="Value" type="Expression" minOccurs="0" />
+          <xs:element name="Value" type="Expression" />
         </xs:sequence>
         <xs:attribute name="desc" type="xs:string" use="required" />
       </xs:extension>
@@ -158,7 +158,7 @@
                 <xs:sequence>
                   <xs:element name="Target" type="xs:token" />
                   <xs:element name="Operation" type="xs:token" />
-                  <xs:element name="Args" type="Expression" minOccurs="0" />
+                  <xs:element name="Args" type="Expression" />
                 </xs:sequence>
               </xs:complexType>
             </xs:element>

@@ -3,9 +3,9 @@
 <RuleSet>
   <TypeDefines>
     <TypeDefine type="Location">
-      <Variable name="altitude" type="float64" />
       <Variable name="longitude" type="float64" />
       <Variable name="latitude" type="float64" />
+      <Variable name="altitude" type="float64" />
     </TypeDefine>
     <TypeDefine type="Vector3">
       <Variable name="x" type="float64" />
@@ -17,10 +17,10 @@
     <FuncDefine type="normal">
       <Symbol>add</Symbol>
       <Params>
-        <Param name="a" type="uint32" />
-        <Param name="b" type="uint32" />
+        <Param name="a" type="float64" />
+        <Param name="b" type="float64" />
       </Params>
-      <Return type="uint32">
+      <Return type="float64">
         <Value>a+b</Value>
       </Return>
     </FuncDefine>
@@ -42,49 +42,61 @@
       </Const>
     </Consts>
     <Inputs>
-      <Input name="Input1" type="uint32" desc="Example input" />
+      <Input name="Input1" type="float64[]" desc="Example input">
+        <Value />
+      </Input>
+      <Input name="Input2" type="float64" desc="Example input">
+        <Value />
+      </Input>
     </Inputs>
     <Outputs>
-      <Output name="Output1" type="uint32" desc="Example output" />
+      <Output name="Output1" type="float64" desc="Example output">
+        <Value />
+      </Output>
     </Outputs>
     <Caches>
-      <Cache name="Cache1" type="uint32" desc="Example cache">
-        <Value>0</Value>
+      <Cache name="Cache1" type="float64[]" desc="Example cache">
+        <Value />
       </Cache>
     </Caches>
     <Temps>
-      <Temp name="Temp1" type="uint32" desc="Example temp">
-        <Value>Input1+1</Value>
+      <Temp name="Temp1" type="float64" desc="Example temp">
+        <Value>Input1[0]+Input2</Value>
       </Temp>
     </Temps>
   </MetaInfo>
   <SubSets>
     <SubSet id="7d54" name="SubSet1" desc="Example subset">
       <Condition join="and">
-        <Expression>Input1==0</Expression>
+        <Expression>true</Expression>
       </Condition>
-      <SubSets></SubSets>
+      <SubSets />
       <Rules>
         <Rule id="a5ec" name="Rule1" desc="Example rule">
           <Condition join="and">
-            <Expression>Cache1&lt;=10</Expression>
+            <Expression>Cache1.length()==0</Expression>
           </Condition>
           <Consequence>
             <Assignment>
-              <Target>Output1</Target>
-              <Value>0</Value>
+              <Target>Cache1</Target>
+              <Value>Input1</Value>
             </Assignment>
           </Consequence>
         </Rule>
         <Rule id="64f7" name="Rule2" desc="Example rule">
           <Condition join="and">
-            <Expression>Cache1&gt;10</Expression>
+            <Expression>Cache1.length()!=0</Expression>
           </Condition>
           <Consequence>
             <Assignment>
               <Target>Output1</Target>
-              <Value>1</Value>
+              <Value>Cache1[Cache1.length()-1]</Value>
             </Assignment>
+            <ArrayOperation>
+              <Target>Cache1</Target>
+              <Operation>push</Operation>
+              <Args>Temp1</Args>
+            </ArrayOperation>
           </Consequence>
         </Rule>
       </Rules>
@@ -93,54 +105,64 @@
       <Condition join="and">
         <Expression>Input1!=0</Expression>
       </Condition>
-      <SubSets></SubSets>
+      <SubSets />
       <Rules>
         <Rule id="a5ec" name="Rule1" desc="Example rule">
           <Condition join="and">
-            <Expression>Input1!=0</Expression>
+            <Expression>Cache1.length()==0</Expression>
           </Condition>
           <Consequence>
             <Assignment>
               <Target>Cache1</Target>
-              <Value>Cache1+1</Value>
+              <Value>Input1</Value>
             </Assignment>
           </Consequence>
         </Rule>
         <Rule id="64f7" name="Rule2" desc="Example rule">
           <Condition join="and">
-            <Expression>Input1==0</Expression>
+            <Expression>Cache1.length()!=0</Expression>
           </Condition>
           <Consequence>
             <Assignment>
-              <Target>Cache1</Target>
-              <Value>Cache1-1</Value>
+              <Target>Output1</Target>
+              <Value>Cache1[Cache1.length()-1]</Value>
             </Assignment>
+            <ArrayOperation>
+              <Target>Cache1</Target>
+              <Operation>push</Operation>
+              <Args>Temp1</Args>
+            </ArrayOperation>
           </Consequence>
         </Rule>
       </Rules>
     </SubSet>
   </SubSets>
   <Rules>
-    <Rule id="a5ec" name="Rule2" desc="Example rule">
+    <Rule id="a5ec" name="Rule1" desc="Example rule">
       <Condition join="and">
-        <Expression>Cache1&lt;=10</Expression>
+        <Expression>Cache1.length()==0</Expression>
       </Condition>
       <Consequence>
         <Assignment>
-          <Target>Output1</Target>
-          <Value>0</Value>
+          <Target>Cache1</Target>
+          <Value>Input1</Value>
         </Assignment>
       </Consequence>
     </Rule>
     <Rule id="64f7" name="Rule2" desc="Example rule">
       <Condition join="and">
-        <Expression>Cache1&gt;10</Expression>
+        <Expression>Cache1.length()!=0</Expression>
       </Condition>
       <Consequence>
         <Assignment>
           <Target>Output1</Target>
-          <Value>1</Value>
+          <Value>Cache1[Cache1.length()-1]</Value>
         </Assignment>
+        <ArrayOperation>
+          <Target>Cache1</Target>
+          <Operation>push</Operation>
+          <Args>Temp1</Args>
+        </ArrayOperation>
       </Consequence>
     </Rule>
   </Rules>
