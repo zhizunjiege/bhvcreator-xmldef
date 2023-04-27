@@ -20,13 +20,6 @@
         <xs:element name="MetaInfo">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Consts">
-                <xs:complexType>
-                  <xs:sequence>
-                    <xs:element name="Const" type="MetaParam" minOccurs="0" maxOccurs="unbounded" />
-                  </xs:sequence>
-                </xs:complexType>
-              </xs:element>
               <xs:element name="Inputs">
                 <xs:complexType>
                   <xs:sequence>
@@ -45,6 +38,13 @@
                 <xs:complexType>
                   <xs:sequence>
                     <xs:element name="Cache" type="MetaParam" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Consts">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Const" type="MetaParam" minOccurs="0" maxOccurs="unbounded" />
                   </xs:sequence>
                 </xs:complexType>
               </xs:element>
