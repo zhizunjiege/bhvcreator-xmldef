@@ -77,92 +77,32 @@
             <Expression>Cache1.length()==0</Expression>
           </Condition>
           <Consequence>
-            <Assignment>
+            <Operation>
               <Target>Cache1</Target>
+              <Method>assign</Method>
               <Value>Input1</Value>
-            </Assignment>
-          </Consequence>
-        </Rule>
-        <Rule id="64f7" name="Rule2" desc="Example rule">
-          <Condition join="and">
-            <Expression>Cache1.length()!=0</Expression>
-          </Condition>
-          <Consequence>
-            <Assignment>
-              <Target>Output1</Target>
-              <Value>Cache1[Cache1.length()-1]</Value>
-            </Assignment>
-            <ArrayOperation>
-              <Target>Cache1</Target>
-              <Operation>push</Operation>
-              <Args>Temp1</Args>
-            </ArrayOperation>
-          </Consequence>
-        </Rule>
-      </Rules>
-    </SubSet>
-    <SubSet id="bbb4" name="SubSet2" desc="Example subset">
-      <Condition join="and">
-        <Expression>Input1!=0</Expression>
-      </Condition>
-      <SubSets />
-      <Rules>
-        <Rule id="a5ec" name="Rule1" desc="Example rule">
-          <Condition join="and">
-            <Expression>Cache1.length()==0</Expression>
-          </Condition>
-          <Consequence>
-            <Assignment>
-              <Target>Cache1</Target>
-              <Value>Input1</Value>
-            </Assignment>
-          </Consequence>
-        </Rule>
-        <Rule id="64f7" name="Rule2" desc="Example rule">
-          <Condition join="and">
-            <Expression>Cache1.length()!=0</Expression>
-          </Condition>
-          <Consequence>
-            <Assignment>
-              <Target>Output1</Target>
-              <Value>Cache1[Cache1.length()-1]</Value>
-            </Assignment>
-            <ArrayOperation>
-              <Target>Cache1</Target>
-              <Operation>push</Operation>
-              <Args>Temp1</Args>
-            </ArrayOperation>
+            </Operation>
           </Consequence>
         </Rule>
       </Rules>
     </SubSet>
   </SubSets>
   <Rules>
-    <Rule id="a5ec" name="Rule1" desc="Example rule">
-      <Condition join="and">
-        <Expression>Cache1.length()==0</Expression>
-      </Condition>
-      <Consequence>
-        <Assignment>
-          <Target>Cache1</Target>
-          <Value>Input1</Value>
-        </Assignment>
-      </Consequence>
-    </Rule>
     <Rule id="64f7" name="Rule2" desc="Example rule">
       <Condition join="and">
         <Expression>Cache1.length()!=0</Expression>
       </Condition>
       <Consequence>
-        <Assignment>
+        <Operation>
           <Target>Output1</Target>
+          <Method>assign</Method>
           <Value>Cache1[Cache1.length()-1]</Value>
-        </Assignment>
-        <ArrayOperation>
+        </Operation>
+        <Operation>
           <Target>Cache1</Target>
-          <Operation>push</Operation>
-          <Args>Temp1</Args>
-        </ArrayOperation>
+          <Method>push</Method>
+          <Value>Temp1</Value>
+        </Operation>
       </Consequence>
     </Rule>
   </Rules>

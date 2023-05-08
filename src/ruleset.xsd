@@ -142,29 +142,7 @@
   <xs:complexType name="Rule">
     <xs:sequence>
       <xs:element name="Condition" type="Condition" />
-      <xs:element name="Consequence">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="Assignment" minOccurs="0" maxOccurs="unbounded">
-              <xs:complexType>
-                <xs:sequence>
-                  <xs:element name="Target" type="xs:token" />
-                  <xs:element name="Value" type="Expression" />
-                </xs:sequence>
-              </xs:complexType>
-            </xs:element>
-            <xs:element name="ArrayOperation" minOccurs="0" maxOccurs="unbounded">
-              <xs:complexType>
-                <xs:sequence>
-                  <xs:element name="Target" type="xs:token" />
-                  <xs:element name="Operation" type="xs:token" />
-                  <xs:element name="Args" type="Expression" />
-                </xs:sequence>
-              </xs:complexType>
-            </xs:element>
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
+      <xs:element name="Consequence" type="Consequence" />
     </xs:sequence>
     <xs:attribute name="id" type="xs:token" use="required" />
     <xs:attribute name="name" type="xs:string" use="required" />
@@ -194,5 +172,27 @@
         </xs:restriction>
       </xs:simpleType>
     </xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="Consequence">
+    <xs:sequence>
+      <xs:element name="Operation" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Target" type="xs:token" />
+            <xs:element name="Method">
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:enumeration value="assign" />
+                  <xs:enumeration value="resize" />
+                  <xs:enumeration value="push" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Value" type="Expression" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
   </xs:complexType>
 </xs:schema>
