@@ -67,13 +67,11 @@
   </MetaInfo>
   <SubSets>
     <SubSet id="7d54" name="SubSet1" desc="Example subset">
-      <Condition join="and">
-        <Expression>true</Expression>
-      </Condition>
+      <Activation>true</Activation>
       <SubSets />
       <Rules>
         <Rule id="a5ec" name="Rule1" desc="Example rule">
-          <Condition join="and">
+          <Condition>
             <Expression>Cache1.length()==0</Expression>
           </Condition>
           <Consequence>
@@ -89,7 +87,7 @@
   </SubSets>
   <Rules>
     <Rule id="64f7" name="Rule2" desc="Example rule">
-      <Condition join="and">
+      <Condition>
         <Expression>Cache1.length()!=0</Expression>
       </Condition>
       <Consequence>
